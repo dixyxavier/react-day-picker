@@ -1,3 +1,0 @@
-# Changelog
-
-!INCLUDE "../CHANGELOG.md"

@@ -1,100 +1,4 @@
-### [v5.2.3](https://github.com/gpbl/react-day-picker/tree/v5.2.3) (2016-04-14)
-
-* Fixed `PropTypes` warnings in React 15.5.
-
-## [v5.2.0](https://github.com/gpbl/react-day-picker/tree/v5.2.0) (2016-03-09)
-
-* Allow overriding `today` modifier ([#279](https://github.com/gpbl/react-day-picker/pull/279) by [maxdubrinsky](https://github.com/maxdubrinsky))
-* Pass React Components to [`navBarElement`](http://react-day-picker.js.org/APIProps.html#navBarElement), [`captionElement`](http://react-day-picker.js.org/APIProps.html#captionElement), [`weekdayElement`](http://react-day-picker.js.org/APIProps.html#weekdayElement) ([#280](https://github.com/gpbl/react-day-picker/pull/280) by [cwmoo740](https://github.com/cwmoo740))
-
-* Fixed `aria` roles for weekdays and months HTML elements ([#276](https://github.com/gpbl/react-day-picker/pull/276) by [oigewan](https://github.com/oigewan))
-
-### [v5.1.2](https://github.com/gpbl/react-day-picker/tree/v5.1.2) (2016-03-03)
-
-* Fix an issue with keyboard navigation when using `classNames` prop ([#269](https://github.com/gpbl/react-day-picker/pull/269) by [oigewan](https://github.com/oigewan), [#275](https://github.com/gpbl/react-day-picker/pull/275))
-* Fix installation issue with bower 
-
-## [v5.1.1](https://github.com/gpbl/react-day-picker/tree/v5.1.1) (2016-03-03)
-
-* New [`classNames`](http://react-day-picker.js.org/APIProps.html#classnames) prop ([#264](https://github.com/gpbl/react-day-picker/issues/264)). 
-  
-  Use this prop to change the CSS class names or add support for CSS modules ([#73](https://github.com/gpbl/react-day-picker/issues/73), see [this example](http://react-day-picker.js.org/examples?cssModules)). 
-
-* New [`month`](http://react-day-picker.js.org/APIProps.html#month) prop ([#263](https://github.com/gpbl/react-day-picker/issues/263)).
-  
-  This differs from the `initialMonth` props as it causes the calendar to re-render when its value changes. 
-
-* Add `aria-label` attributes to the navigation bar with the new [`labels`](http://react-day-picker.js.org/APIProps.html#labels) prop ([#258](https://github.com/gpbl/react-day-picker/issues/258)).
-
-
-# [v5.0.0](https://github.com/gpbl/react-day-picker/tree/v5.0.0) (2017-02-14)
-
-This release focuses on improving perfomance and the component's API.
-
-* **New modifiers value types** ([#254](https://github.com/gpbl/react-day-picker/issues/254))
-
-  Use dates, arrays, or ranges as modifier types, not just functions:
-
-  ```diff
-  <DayPicker 
-  -     selectedDays={ day => DateUtils.isSameDay(day, this.state.selectedDay)}
-  +     selectedDays={ this.state.selectedDay }
-  />
-  ```
-
-  Read more in the [modifiers documentation](http://react-day-picker.js.org/Modifiers.html).
-
-* **Breaking change** Event handlers signature has changed ([#256](https://github.com/gpbl/react-day-picker/issues/256))
-
-  All events handlers like `onDayClick`, `onCaptionClick`, etc. now receive the Syntethic Event as last argument. Thus you must change your event handlers as follow:
-
-  ```diff
-  onDayClick={
-  - (e, day, modifiers) => {
-  + (day, modifiers, e)
-      e.preventDefault();
-      console.log(day);
-      console.log(modifiers);
-    }
-  }
-
-  ```
-
-* **Breaking change** Use [`containerProps`](http://react-day-picker.js.org/APIProps.html#containerprops) to pass props to the container `div` element. Before, any prop was passed to the container element degrading performance ([#255](https://github.com/gpbl/react-day-picker/issues/255)):
-
-  ```diff
-  <DayPicker 
-  -    data-thing="foo" 
-  +    containerProps={ 'data-thing': 'foo' }
-  />
-  ```
-
----
-
-# [v4.0.0](https://github.com/gpbl/react-day-picker/tree/v4.0.0) (2017-02-10)
-
-* Pass the day's modifiers to the `renderDay` prop function ([#237](https://github.com/gpbl/react-day-picker/issues/237))
-
-* **Breaking change** Updating `initialMonth` will not show anymore a different month after the first mount ([#169](https://github.com/gpbl/react-day-picker/issues/169))
-
-  If you need the calendar to display a different month, use the [`month`](http://react-day-picker.js.org/APIProps.html#month) prop.
-
-* **Breaking change** Use `lang` HTML attribute instead of a specific CSS class name.
-
-  This change may break your style or layout if you are styling the component according to the current locale. 
-  If this is the case, change your CSS to use the `lang` attribute selector. For examples,
-  if you are styling the calendar for the `de` locale:
-
-  ```diff
-  - .DayPicker--de {
-  + .DayPicker[lang="de"] {
-    background: yellow;
-  }
-  ```
-
----
-
-### [v3.1.1](https://github.com/gpbl/react-day-picker/tree/v3.1.1) (2016-10-18)
+### [v3.1.1](https://github.com/gpbl/react-day-picker/tree/v3.1.1) (2016-10-14)
 
 * Fixed [an issue](https://github.com/gpbl/react-day-picker/issues/227) with IE and older Safari.
 
@@ -122,6 +26,7 @@ With these new props you can localize the Day Picker in a more declarative way. 
 For any locale, weekday names must now begin from Sunday, and the first day of week should reflect this change (hence to start from Monday, the first day of week is `1`). See this [diff](https://github.com/gpbl/react-day-picker/commit/e1462b3818e0a56c24cbcdeb9dba52da8cd8ff72?diff=unified) as example.
   
 ---
+
 
 ## [v2.5.0](https://github.com/gpbl/react-day-picker/tree/v2.5.0) (2016-10-06)
 
